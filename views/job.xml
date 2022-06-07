@@ -1,0 +1,13 @@
+<odoo>
+        <record id="netsuite_job_klaviyo_form" model="ir.ui.view">
+            <field name="name">External Jobs Klaviyo Form</field>
+            <field name="model">netsuite.job</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="integrator_netsuite.netsuite_job_form" />
+            <field name="arch" type="xml">
+                <group name="netsuite_parameters" position="inside">
+                    <field name="klaviyo_event_name" />
+                </group>
+            </field>
+        </record>
+</odoo>

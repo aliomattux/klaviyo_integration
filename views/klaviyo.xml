@@ -1,0 +1,64 @@
+<odoo>
+        <menuitem name="Klaviyo"
+        id="menu_klaviyo_core"
+        parent="integrator.menu_integrator"
+        sequence="70"/>
+
+        <menuitem name="Configuration"
+        id="menu_klaviyo_configuration"
+        parent="menu_klaviyo_core"
+        sequence="100"/>
+
+        <menuitem name="event"
+        id="menu_klaviyo_event"
+        parent="menu_klaviyo_core"
+        sequence="110"/>
+
+        <record id="view_klaviyo_event_tree" model="ir.ui.view">
+            <field name="name">Klaviyo event Tree</field>
+            <field name="model">klaviyo.event</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="create_date" />
+                    <field name="record_id" />
+                    <field name="recordtype" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_klaviyo_setup_tree" model="ir.ui.view">
+            <field name="name">klaviyo Setup Tree</field>
+            <field name="model">klaviyo.setup</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+                    <field name="name" />
+                    <field name="public_key" />
+                    <field name="private_key" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_klaviyo_setup" model="ir.actions.act_window">
+            <field name="name">Klaviyo Setup</field>
+            <field name="res_model">klaviyo.setup</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_id" ref="view_klaviyo_setup_tree"/>
+        </record>
+
+        <menuitem action="action_klaviyo_setup"
+        id="menu_klaviyo_setup"
+        parent="menu_klaviyo_configuration"
+        sequence="40"/>
+
+        <record id="action_klaviyo_event" model="ir.actions.act_window">
+            <field name="name">Klaviyo Event</field>
+            <field name="res_model">klaviyo.event</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_id" ref="view_klaviyo_event_tree"/>
+        </record>
+
+        <menuitem action="action_klaviyo_event"
+        id="menu_klaviyo_email_sent"
+        parent="menu_klaviyo_event"
+        sequence="50"/>
+</odoo>
